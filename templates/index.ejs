@@ -8,10 +8,7 @@
             frame2
             <iframe id="frame2" src="/test?id=1"></iframe>
         </div>
-        <script src="frame.js"></script>
-        <a href="/frame-a.html">to a</a>
-        <button onclick="javascript:document.getElementById('frame1').remove();">remove frame1</button>
-        <button onclick="javascript:window.history.go(-1);console.log('history - 1');">history.go(-1)</button>
-        <button onclick="javascript:window.history.go(-2);">(go(-2))</button>
+        <script src="parent.js"></script>
+        <button onclick="javascript:resetFrame2();">reset frame2</button>
     </body>
 </html>

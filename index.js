@@ -1,5 +1,6 @@
 const express = require('express');
 const ejs = require('ejs');
+const qs = require('qs');
 
 const app = express();
 
@@ -13,17 +14,24 @@ app.get('/index', (req, res) => {
         }
 
         res.send(str);
+    });
+});
+
+
+app.get('/test', (req, res) => {
+    const query = qs.parse(req.query) || {};
+    const data = {
+        id: typeof query.id === 'string' ? Number(query.id) : 0,
+    };
+    ejs.renderFile('./templates/test.ejs', data, {}, (err, str) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send('server error');
+        }
+
+        res.send(str);
     })
 });
 
-
-app.get('/search', (req, res) => {
-  
-});
-
-
-app.get('/product', (req, res) => {
-  
-});
 
 app.listen(8081);

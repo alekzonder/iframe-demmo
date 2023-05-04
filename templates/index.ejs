@@ -1,11 +1,17 @@
 <html>
-    <head>
-        <script src="/main.js"></script>
-    </head>
     <body>
-        <h1>index</h1>
-        <a href="/a.html">to a</a>
-        <a href="/b.html">to b</a>
-        <button onclick="javascript:window.history.back()">history.back</button>
+        <div>
+            frame1
+            <iframe id="frame1" src="/test?id=1"></iframe>
+        </div>
+        <div>
+            frame2
+            <iframe id="frame2" src="/test?id=1"></iframe>
+        </div>
+        <script src="frame.js"></script>
+        <a href="/frame-a.html">to a</a>
+        <button onclick="javascript:document.getElementById('frame1').remove();">remove frame1</button>
+        <button onclick="javascript:window.history.go(-1);console.log('history - 1');">history.go(-1)</button>
+        <button onclick="javascript:window.history.go(-2);">(go(-2))</button>
     </body>
 </html>

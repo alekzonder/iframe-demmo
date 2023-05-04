@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <div>
+            frame1
+            <iframe id="frame1" src="http://127.0.0.1:8081"></iframe>
+        </div>
+        <div>
+            frame2
+            <iframe id="frame2" src="http://127.0.0.1:8081"></iframe>
+        </div>
+        <script src="frame.js"></script>
+        <a href="/frame-a.html">to a</a>
+        <button onclick="javascript:document.getElementById('frame1').remove();">remove frame1</button>
+        <button onclick="javascript:window.history.go(-1);console.log('history - 1');">history.go(-1)</button>
+        <button onclick="javascript:window.history.go(-2);">(go(-2))</button>
+    </body>
+</html>

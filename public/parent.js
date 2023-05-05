@@ -13,13 +13,20 @@ window.addEventListener('message', (event) => {
     const id = data['id'];
 
     framesHistory[id].push(data['type']);
+
+    console.log('got message', data['id'], data['type'], framesHistory[id]);
   } catch (e) {
     console.log('invalid post message');
   }
 });
 
-const resetFrame2 = () => {
+const calcFrame2HistoryBack = () => {
   console.log('resetFrame2', framesHistory['frame2']);
+
+  if (framesHistory['frame2'].length === 1) {
+    console.log('no history');
+    return 0;
+  }
 
   let historyBack = 0;
 
@@ -34,6 +41,17 @@ const resetFrame2 = () => {
       historyBack -= 2;
     }
   });
+
+  return historyBack;
+};
+
+const resetFrame2 = () => {
+  const historyBack = calcFrame2HistoryBack();
+
+  if (historyBack === 0) {
+    console.log('no history changes needed');
+    return;
+  }
 
   console.log('history.go', historyBack);
 
